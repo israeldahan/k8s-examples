@@ -17,6 +17,11 @@ spec:
         image: israeldahan/node-app@sha256:be7bb993757ffd189e09780d7350580ed5bb887ea3194df55ab64f99edaabd8d
         env:
         - name: NAME
-          value: "Ort College"
+          value: "Hi Amit"
         ports:
         - containerPort: 3000
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m
