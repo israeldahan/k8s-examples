@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "myFirstChart.name" . }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+  replicas: 4 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app_name }}
+    spec:
+      containers:
+      - name: {{ .Values.app_name }}
+        image: {{ .Values.build.image}}:{{ .Values.build.tag }}
+        {{- with .Values.env }}
+        env:
+          {{- toYaml . | nindent 8 }}
+        {{- end }}
+        {{- with .Values.volumes }}
+          volume: {{ .volume_one }}
+          chart: {{ $.Values.app_name }}
+        {{- end -}}

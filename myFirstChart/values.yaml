@@ -1,0 +1,23 @@
+nameOverride: myFirstChartOverride-
+app_name: nginx
+
+build:
+  image: nginx
+  tag: 1.27
+
+
+env:
+  - name: NGINX_PORT
+    value: "80"
+  - name: NAME
+    value: "Ort College"
+
+volumes:
+  volume_one: 
+    test:
+      scope: 1
+      scope2: 2
+  volume_tow: 
+    test:
+      scope: 1
+      scope2: 2

@@ -1,0 +1,16 @@
+test: {{ .Chart.Name }}
+val: {{ .Values.app_name }}
+env:
+{{- with .Values.env }}
+  a: {{ $.Chart.Name }}
+{{- end }}
+envRange:
+{{- range .Values.env }}
+    {{ .name }}: {{ .value }}
+{{- end }}
+volRange:
+{{- range .Values.volumes }}
+    {{- range . }}
+        {{ .scope }} - {{ .scope2 }}
+    {{- end }}
+{{- end }}
